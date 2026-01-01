@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package metadata;
+option go_package = "proto/metadata";
+
+service MetadataService {
+    rpc CreateMetadata(CreateMetadataRequest) returns (CreateMetadataResponse);
+    rpc GetMetadata(GetMetadataRequest) returns (GetMetadataResponse);
+}
+
+message CreateMetadataRequest {
+    string filename = 1;
+    int64 size = 2;
+    string mime_type = 3;
+}
+
+message CreateMetadataResponse {
+    string id = 1;
+}
+
+message GetMetadataRequest {
+    string id = 1;
+}
+
+message GetMetadataResponse {
+    string id = 1;
+    string filename = 2;
+    int64 size = 3;
+    string mime_type = 4;
+    string status = 5;
+ }
